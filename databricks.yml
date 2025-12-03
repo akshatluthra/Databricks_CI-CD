@@ -1,0 +1,34 @@
+bundle:
+  name: databricks
+ 
+include:
+  - resources/*.yml
+variables:
+  warehouse_id: ----
+    lookup:
+      warehouse: "----"
+  catalog_name:
+    description: "Catalog used per environment"
+    default: dev_ws
+ 
+targets:
+  dev:
+    mode: development
+    workspace:
+      host: https://dbc-613a742d-fd0d.cloud.databricks.com
+    variables:
+      catalog_name: ---
+ 
+  uat:
+    mode: development
+    workspace:
+      host: https://dbc-dc5c2386-76b7.cloud.databricks.com
+    variables:
+      catalog_name: ----
+ 
+  prod:
+    mode: production
+    workspace:
+      host: ---
+    variables:
+      catalog_name: ---
